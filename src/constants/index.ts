@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
       "TypeScript",
       "Shadcn UI",
     ],
-    url: "https://closar.ai",
+    url: "https://closarai.netlify.app/",
   },
   {
     name: "Selma Services",
@@ -53,7 +53,7 @@ export const PROJECTS: Project[] = [
       "Tailwind CSS",
       "Shadcn UI",
     ],
-    url: "https://vaxllo.vercel.app",
+    url: "https://vaxllo.netlify.app/",
   },
 ];
 

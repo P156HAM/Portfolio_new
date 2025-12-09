@@ -47,7 +47,9 @@ export const Contact = () => {
             Email Me ✉️
           </a>
           <a
-            href="#"
+            href="https://calendar.google.com/calendar/u/0/r/eventedit?text=Call+with+Hamdi&details=Let's+meet+via+Google+Meet!+Please+pick+a+date+and+time.+You+can+include+agenda+or+project+details+if+you+wish.&location=Google+Meet&add=a.hamdi.almasalmeh@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 border-4 border-white text-white font-black text-base sm:text-lg md:text-xl rounded-full hover:bg-white hover:text-purple-900 hover:scale-110 hover:-rotate-3 transition-all"
           >
             Schedule Call 📞
