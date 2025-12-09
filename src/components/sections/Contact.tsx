@@ -13,7 +13,12 @@ export const Contact = () => {
         />
         <div
           className="absolute w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 bg-purple-500 rounded-full blur-3xl animate-pulse"
-          style={{ bottom: "10%", right: "10%", left: "20%", animationDelay: "1s" }}
+          style={{
+            bottom: "10%",
+            right: "10%",
+            left: "20%",
+            animationDelay: "1s",
+          }}
         />
       </div>
 
@@ -36,7 +41,7 @@ export const Contact = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 md:gap-6 justify-center mb-8 sm:mb-10 md:mb-12 px-4">
           <a
-            href="mailto:hello@alex.com"
+            href="mailto:a.hamdi.almasalmeh@gmail.com"
             className="px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 bg-white text-purple-900 font-black text-base sm:text-lg md:text-xl rounded-full hover:scale-110 hover:rotate-3 transition-all shadow-2xl"
           >
             Email Me ✉️
@@ -64,4 +69,3 @@ export const Contact = () => {
     </div>
   );
 };
-

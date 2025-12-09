@@ -1,34 +1,41 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { LuckyMode, Theme, Project } from "@/types";
-import { LUCKY_MODES, LUCKY_MODE_DURATION, PROJECT_SCROLL_DELAY } from "@/constants";
-import { THEMES } from "@/constants";
+import {
+  LUCKY_MODES,
+  LUCKY_MODE_DURATION,
+  PROJECT_SCROLL_DELAY,
+} from "@/constants";
 
 export const useLuckyMode = (projects: Project[]) => {
   const [luckyMode, setLuckyMode] = useState<LuckyMode>(null);
   const [theme, setTheme] = useState<Theme>("default");
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const modeIndexRef = useRef(0);
 
   const handleLuckyClick = () => {
-    const randomMode =
-      LUCKY_MODES[Math.floor(Math.random() * LUCKY_MODES.length)];
-    setLuckyMode(randomMode);
+    // Cycle through modes in order
+    const currentMode = LUCKY_MODES[modeIndexRef.current];
+    modeIndexRef.current = (modeIndexRef.current + 1) % LUCKY_MODES.length;
+    setLuckyMode(currentMode);
 
-    if (randomMode === "theme") {
-      // Theme change happens immediately but effect stays visible
+    if (currentMode === "theme") {
+      // Toggle between default and dark themes
       setTimeout(() => {
-        const themeKeys = Object.keys(THEMES) as Theme[];
-        const randomTheme =
-          themeKeys[Math.floor(Math.random() * themeKeys.length)];
-        setTheme(randomTheme);
+        if (theme === "default") {
+          setTheme("dark");
+        } else {
+          setTheme("default");
+        }
         // Keep mode visible for duration
         setTimeout(() => setLuckyMode(null), LUCKY_MODE_DURATION);
       }, 100);
-    } else if (randomMode === "project") {
-      const randomProject =
-        projects[Math.floor(Math.random() * projects.length)];
+    } else if (currentMode === "project") {
+      // Cycle through projects in order
+      const currentProjectIndex =
+        hoveredProject !== null ? (hoveredProject + 1) % projects.length : 0;
       document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
       setTimeout(() => {
-        setHoveredProject(projects.indexOf(randomProject));
+        setHoveredProject(currentProjectIndex);
         // Keep mode visible for duration
         setTimeout(() => setLuckyMode(null), LUCKY_MODE_DURATION);
       }, PROJECT_SCROLL_DELAY);
@@ -46,4 +53,3 @@ export const useLuckyMode = (projects: Project[]) => {
     handleLuckyClick,
   };
 };
-

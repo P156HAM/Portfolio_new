@@ -1,4 +1,4 @@
-import { Project, MousePosition } from "@/types";
+import { Project, MousePosition, ThemeConfig } from "@/types";
 import { SectionTitle } from "../common/SectionTitle";
 import { ProjectCard } from "./ProjectCard";
 
@@ -9,6 +9,7 @@ interface WorkProps {
   onProjectHover: (index: number | null) => void;
   onCursorEnter: () => void;
   onCursorLeave: () => void;
+  theme: ThemeConfig;
 }
 
 export const Work = ({
@@ -18,11 +19,16 @@ export const Work = ({
   onProjectHover,
   onCursorEnter,
   onCursorLeave,
+  theme,
 }: WorkProps) => {
   return (
     <div
       id="work"
-      className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 bg-gradient-to-b from-white via-purple-50/30 to-white"
+      className={`py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 transition-colors duration-1000 ${
+        theme.bg === "bg-gray-900" || theme.bg === "bg-black"
+          ? "bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900"
+          : "bg-gradient-to-b from-white via-purple-50/30 to-white"
+      }`}
     >
       <div className="max-w-7xl mx-auto">
         <SectionTitle subtitle="Selected Work" title="Projects" />
@@ -42,6 +48,12 @@ export const Work = ({
               onMouseLeave={() => {
                 onProjectHover(null);
                 onCursorLeave();
+              }}
+              onLinkClick={() => {
+                console.log("Clicking project:", project.url);
+                if (project.url) {
+                  window.open(project.url, "_blank", "noopener,noreferrer");
+                }
               }}
             />
           ))}

@@ -5,6 +5,7 @@ export interface Project {
   color: string;
   desc: string;
   tech: string[];
+  url: string;
 }
 
 export interface Particle {
@@ -62,4 +63,3 @@ export interface Stat {
 export interface Skill {
   name: string;
 }
-

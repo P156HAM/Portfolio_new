@@ -1,8 +1,13 @@
 import { StatCard } from "../common/StatCard";
 import { SkillBadge } from "../common/SkillBadge";
 import { STATS, SKILLS } from "@/constants";
+import { ThemeConfig } from "@/types";
 
-export const About = () => {
+interface AboutProps {
+  theme: ThemeConfig;
+}
+
+export const About = ({ theme }: AboutProps) => {
   const statConfigs = [
     {
       gradientFrom: "from-purple-100",
@@ -24,7 +29,7 @@ export const About = () => {
   return (
     <div
       id="about"
-      className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 bg-white relative overflow-hidden"
+      className={`py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 ${theme.bg} relative overflow-hidden transition-colors duration-1000`}
     >
       <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 rounded-full bg-purple-100 opacity-20 blur-3xl animate-pulse" />
       <div
@@ -38,22 +43,45 @@ export const About = () => {
             <div className="text-xs sm:text-sm font-bold tracking-widest text-cyan-600 mb-3 sm:mb-4 uppercase">
               About Me
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 mb-4 sm:mb-6 md:mb-8 leading-tight">
+            <h2
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black ${theme.text} mb-4 sm:mb-6 md:mb-8 leading-tight`}
+            >
               Hi, I'm Hamdi
-              <span className="inline-block animate-bounce ml-1 sm:ml-2">
-                👋
-              </span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mb-4 sm:mb-5 md:mb-6">
+            <p
+              className={`text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-5 md:mb-6 ${
+                theme.text === "text-white" ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
               I'm an independent creative developer from{" "}
-              <strong className="text-purple-600">Gothenburg, Sweden</strong>,
-              with a passion for building beautiful, functional, and
+              <strong
+                className={
+                  theme.text === "text-white"
+                    ? "text-cyan-400"
+                    : "text-purple-600"
+                }
+              >
+                Gothenburg, Sweden
+              </strong>
+              , with a passion for building beautiful, functional, and
               user-friendly digital experiences.
             </p>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-7 md:mb-8">
+            <p
+              className={`text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-7 md:mb-8 ${
+                theme.text === "text-white" ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
               I combine technical expertise with creative vision to deliver
               exceptional results that make people say{" "}
-              <em className="text-pink-600 font-semibold">"Wow!"</em> 🎨✨
+              <em
+                className={
+                  theme.text === "text-white"
+                    ? "text-cyan-400 font-semibold"
+                    : "text-pink-600 font-semibold"
+                }
+              >
+                "Wow!"
+              </em>{" "}
             </p>
 
             <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-7 md:mb-8">
@@ -62,9 +90,17 @@ export const About = () => {
               ))}
             </div>
 
-            <button className="px-6 sm:px-7 md:px-8 py-3 sm:py-3.5 md:py-4 bg-black text-white text-sm sm:text-base font-bold rounded-full hover:bg-purple-600 hover:scale-110 transition-all shadow-lg">
+            <a
+              href="/Hamdi_Resume.pdf"
+              download
+              className={`px-6 sm:px-7 md:px-8 py-3 sm:py-3.5 md:py-4 text-white text-sm sm:text-base font-bold rounded-full hover:scale-110 transition-all shadow-lg inline-block ${
+                theme.text === "text-white"
+                  ? "bg-cyan-500 hover:bg-cyan-400"
+                  : "bg-black hover:bg-purple-600"
+              }`}
+            >
               Download Resume 📄
-            </button>
+            </a>
           </div>
 
           <div className="relative mt-8 md:mt-0">

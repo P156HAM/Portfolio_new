@@ -22,19 +22,31 @@ export const Navigation = ({ theme, onLuckyClick }: NavigationProps) => {
         <div className="hidden md:flex gap-6 lg:gap-8 items-center">
           <a
             href="#work"
-            className="text-sm font-semibold hover:text-purple-600 transition-colors"
+            className={`text-sm font-semibold transition-colors ${
+              theme.text === "text-white" 
+                ? "text-white hover:text-cyan-400" 
+                : "text-gray-900 hover:text-purple-600"
+            }`}
           >
             Work
           </a>
           <a
             href="#about"
-            className="text-sm font-semibold hover:text-purple-600 transition-colors"
+            className={`text-sm font-semibold transition-colors ${
+              theme.text === "text-white" 
+                ? "text-white hover:text-cyan-400" 
+                : "text-gray-900 hover:text-purple-600"
+            }`}
           >
             About
           </a>
           <a
             href="#contact"
-            className="text-sm font-semibold hover:text-purple-600 transition-colors"
+            className={`text-sm font-semibold transition-colors ${
+              theme.text === "text-white" 
+                ? "text-white hover:text-cyan-400" 
+                : "text-gray-900 hover:text-purple-600"
+            }`}
           >
             Contact
           </a>
@@ -56,19 +68,19 @@ export const Navigation = ({ theme, onLuckyClick }: NavigationProps) => {
           aria-label="Toggle menu"
         >
           <span
-            className={`w-6 h-0.5 bg-gray-900 transition-all ${
-              isMenuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
+            className={`w-6 h-0.5 transition-all ${
+              theme.text === "text-white" ? "bg-white" : "bg-gray-900"
+            } ${isMenuOpen ? "rotate-45 translate-y-2" : ""}`}
           />
           <span
-            className={`w-6 h-0.5 bg-gray-900 transition-all ${
-              isMenuOpen ? "opacity-0" : ""
-            }`}
+            className={`w-6 h-0.5 transition-all ${
+              theme.text === "text-white" ? "bg-white" : "bg-gray-900"
+            } ${isMenuOpen ? "opacity-0" : ""}`}
           />
           <span
-            className={`w-6 h-0.5 bg-gray-900 transition-all ${
-              isMenuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
+            className={`w-6 h-0.5 transition-all ${
+              theme.text === "text-white" ? "bg-white" : "bg-gray-900"
+            } ${isMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
           />
         </button>
       </div>
@@ -87,21 +99,33 @@ export const Navigation = ({ theme, onLuckyClick }: NavigationProps) => {
           <a
             href="#work"
             onClick={() => setIsMenuOpen(false)}
-            className="text-sm font-semibold hover:text-purple-600 transition-colors py-2"
+            className={`text-sm font-semibold transition-colors py-2 ${
+              theme.text === "text-white" 
+                ? "text-white hover:text-cyan-400" 
+                : "text-gray-900 hover:text-purple-600"
+            }`}
           >
             Work
           </a>
           <a
             href="#about"
             onClick={() => setIsMenuOpen(false)}
-            className="text-sm font-semibold hover:text-purple-600 transition-colors py-2"
+            className={`text-sm font-semibold transition-colors py-2 ${
+              theme.text === "text-white" 
+                ? "text-white hover:text-cyan-400" 
+                : "text-gray-900 hover:text-purple-600"
+            }`}
           >
             About
           </a>
           <a
             href="#contact"
             onClick={() => setIsMenuOpen(false)}
-            className="text-sm font-semibold hover:text-purple-600 transition-colors py-2"
+            className={`text-sm font-semibold transition-colors py-2 ${
+              theme.text === "text-white" 
+                ? "text-white hover:text-cyan-400" 
+                : "text-gray-900 hover:text-purple-600"
+            }`}
           >
             Contact
           </a>

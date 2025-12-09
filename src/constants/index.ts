@@ -18,38 +18,42 @@ export const PROJECTS: Project[] = [
       "TypeScript",
       "Shadcn UI",
     ],
+    url: "https://closar.ai",
   },
   {
-    name: "Quantum Leap",
-    type: "Web Experience",
+    name: "Selma Services",
+    type: "Mobile App",
     year: "2024",
     color: "#00ffff",
-    desc: "Interactive 3D portfolio for tech startup",
-    tech: ["Three.js", "GSAP", "WebGL"],
+    desc: "Mobile app connecting customers to service providers",
+    tech: [
+      "React Native",
+      "Expo",
+      "Node.js",
+      "GCP Cloud Functions",
+      "Firebase",
+      "TypeScript",
+      "Google Calendar API",
+    ],
+    url: "https://apps.apple.com/se/app/selma-services/id6747241740?l=en-GB",
   },
   {
-    name: "Echo System",
-    type: "Mobile App",
-    year: "2023",
+    name: "Vaxllo - AI receptionist",
+    type: "Web & Mobile App",
+    year: "2025",
     color: "#8a2be2",
-    desc: "Social network for creative professionals",
-    tech: ["React Native", "Node.js", "MongoDB"],
-  },
-  {
-    name: "Void Space",
-    type: "Branding",
-    year: "2023",
-    color: "#ff6b35",
-    desc: "Complete brand identity for fintech company",
-    tech: ["Figma", "After Effects", "Illustrator"],
-  },
-  {
-    name: "Aurora",
-    type: "Web App",
-    year: "2024",
-    color: "#00ff88",
-    desc: "Real-time collaboration platform",
-    tech: ["Next.js", "Socket.io", "PostgreSQL"],
+    desc: "AI receptionist for small businesses",
+    tech: [
+      "React Native",
+      "Node.js",
+      "Supabase",
+      "OpenAI",
+      "Twilio",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn UI",
+    ],
+    url: "https://vaxllo.vercel.app",
   },
 ];
 
@@ -97,21 +101,21 @@ export const THEMES: ThemeMap = {
 };
 
 export const LUCKY_MODES: Array<
+  | "matrix"
+  | "theme"
+  | "glitch"
   | "particles"
   | "confetti"
-  | "theme"
   | "project"
-  | "matrix"
   | "kaleidoscope"
-  | "glitch"
 > = [
+  "matrix",
+  "theme",
+  "glitch",
   "particles",
   "confetti",
-  "theme",
   "project",
-  "matrix",
   "kaleidoscope",
-  "glitch",
 ];
 
 export const PARTICLE_COLORS = [
@@ -132,13 +136,13 @@ export const FLOATING_SHAPE_COLORS = [
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  { name: "GitHub", url: "#" },
-  { name: "LinkedIn", url: "#" },
+  { name: "GitHub", url: "https://github.com/P156HAM" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/hamdi-almasalmeh/" },
 ];
 
 export const STATS: Stat[] = [
   { value: "10+", label: "Projects" },
-  { value: "2", label: "Years Exp" },
+  { value: "1-2", label: "Years Exp" },
   { value: "∞", label: "Ideas" },
 ];
 

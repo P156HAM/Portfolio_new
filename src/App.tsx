@@ -37,7 +37,7 @@ function App() {
 
   const currentTheme = THEMES[theme];
 
-  const handleCursorEnter = () => setCursorSize(60);
+  const handleCursorEnter = () => setCursorSize(80);
   const handleCursorLeave = () => setCursorSize(24);
 
   return (
@@ -62,8 +62,9 @@ function App() {
           onProjectHover={setHoveredProject}
           onCursorEnter={handleCursorEnter}
           onCursorLeave={handleCursorLeave}
+          theme={currentTheme}
         />
-        <About />
+        <About theme={currentTheme} />
         <Contact />
         <Footer />
       </div>

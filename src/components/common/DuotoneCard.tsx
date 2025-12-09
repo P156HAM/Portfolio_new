@@ -9,6 +9,7 @@ interface DuotoneCardProps {
   intensity?: number;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  onClick?: () => void;
   style?: CSSProperties;
 }
 
@@ -20,6 +21,7 @@ export const DuotoneCard = ({
   intensity = 3,
   onMouseEnter,
   onMouseLeave,
+  onClick,
   style,
 }: DuotoneCardProps) => {
   const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 });
@@ -57,6 +59,13 @@ export const DuotoneCard = ({
   const offsetX = mousePos.x;
   const offsetY = mousePos.y;
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
     <div
       ref={cardRef}
@@ -70,11 +79,12 @@ export const DuotoneCard = ({
         setMousePos({ x: 0, y: 0 });
         onMouseLeave?.();
       }}
+      onClick={handleClick}
       style={{ isolation: "isolate", overflow: "hidden", ...style }}
     >
       {/* Base layer - static */}
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 pointer-events-none"
         style={{
           backgroundColor: baseColor,
           borderRadius: "inherit",
