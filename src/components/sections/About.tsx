@@ -92,7 +92,7 @@ export const About = ({ theme }: AboutProps) => {
 
             <a
               href="/Hamdi_Resume.pdf"
-              download
+              download="Hamdi_Resume.pdf"
               className={`px-6 sm:px-7 md:px-8 py-3 sm:py-3.5 md:py-4 text-white text-sm sm:text-base font-bold rounded-full hover:scale-110 transition-all shadow-lg inline-block ${
                 theme.text === "text-white"
                   ? "bg-cyan-500 hover:bg-cyan-400"
