@@ -1,4 +1,4 @@
-# Epic Portfolio
+# Portfolio
 
 A modern, interactive portfolio built with React, TypeScript, Vite, and Tailwind CSS.
 
