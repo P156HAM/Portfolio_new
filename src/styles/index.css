@@ -2,108 +2,133 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes gradient {
-  0%,
-  100% {
-    background-position: 0% 50%;
+@layer base {
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --surface-2: #f4f2ec;
+    --text: #14130f;
+    --muted: #6b6a62;
+    --border: #e7e3d8;
+    --accent: #6d28d9;
+    --accent-2: #db2777;
+    --accent-soft: rgba(109, 40, 217, 0.1);
   }
-  50% {
-    background-position: 100% 50%;
+
+  .dark {
+    --bg: #0b0b0e;
+    --surface: #131318;
+    --surface-2: #1a1a21;
+    --text: #f4f3ef;
+    --muted: #9a988f;
+    --border: #26262f;
+    --accent: #a78bfa;
+    --accent-2: #f472b6;
+    --accent-soft: rgba(167, 139, 250, 0.14);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.45s ease, color 0.45s ease;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  :where(a, button, [tabindex]):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 999px;
+    border: 3px solid var(--bg);
   }
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
+@layer components {
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
-  50% {
-    transform: translateY(-20px);
+
+  .gradient-text {
+    background-image: linear-gradient(115deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .noise {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
 
-@keyframes spin {
+@keyframes marquee {
   from {
-    transform: rotate(0deg);
+    transform: translateX(0);
   }
   to {
-    transform: rotate(360deg);
+    transform: translateX(-50%);
   }
 }
 
-@keyframes glitch {
-  0% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, 2px);
-  }
-  80% {
-    transform: translate(2px, -2px);
-  }
-  100% {
-    transform: translate(0);
-  }
+.animate-marquee {
+  animation: marquee 32s linear infinite;
 }
 
-@keyframes floatShape {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  25% {
-    transform: translateY(-30px) translateX(15px);
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
-  50% {
-    transform: translateY(-20px) translateX(-10px);
-  }
-  75% {
-    transform: translateY(-40px) translateX(20px);
-  }
-}
-
-
-@keyframes pulseShape {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.2;
-  }
-  50% {
-    transform: scale(1.15);
-    opacity: 0.35;
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
-
-@keyframes morphShape {
-  0%, 100% {
-    filter: blur(0px) brightness(1);
-  }
-  25% {
-    filter: blur(2px) brightness(1.2);
-  }
-  50% {
-    filter: blur(1px) brightness(0.9);
-  }
-  75% {
-    filter: blur(1.5px) brightness(1.1);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.animate-shimmer {
-  animation: shimmer 2s ease-in-out infinite;
-}
-

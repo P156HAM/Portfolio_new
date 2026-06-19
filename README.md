@@ -1,75 +1,46 @@
-# Portfolio
+# Hamdi Almasalmeh — Portfolio
 
-A modern, interactive portfolio built with React, TypeScript, Vite, and Tailwind CSS.
+Personal portfolio of Hamdi Almasalmeh, a full-stack developer in Gothenburg,
+Sweden, building AI-powered web and mobile products.
 
-## Features
+Built with **React 18**, **TypeScript**, **Vite**, and **Tailwind CSS**.
 
-- 🎨 Beautiful, modern design with smooth animations
-- 🎲 "I Feel Lucky" button with 7 epic random effects
-- 📱 Fully responsive design
-- ⚡ Fast performance with Vite
-- 🔒 Fully typed with TypeScript
-- 🧩 Modular component architecture
-- 🎯 Custom hooks for reusable logic
+## Highlights
 
-## Tech Stack
+- Editorial, content-first design with light & dark themes (respects system preference)
+- Case-study project section (incl. the open-source [`logslim`](https://www.npmjs.com/package/logslim) npm package)
+- Accessible: semantic landmarks, focus-visible styles, reduced-motion support
+- SEO-ready: Open Graph & Twitter cards, JSON-LD `Person` schema, sitemap & robots
 
-- **React 18** - UI library
-- **TypeScript** - Type safety
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Styling
-- **Custom Hooks** - Reusable logic
+## Develop
 
-## Project Structure
+```bash
+npm install
+npm run dev      # start the dev server
+npm run build    # type-check + production build
+npm run preview  # preview the production build
+npm run lint     # lint
+```
+
+## Structure
 
 ```
 src/
 ├── components/
-│   ├── common/          # Reusable UI components
-│   ├── effects/         # Visual effect components
-│   └── sections/        # Page section components
-├── hooks/               # Custom React hooks
-├── types/               # TypeScript type definitions
-├── constants/           # App constants and data
-├── styles/              # Global styles
-├── App.tsx              # Main app component
-└── main.tsx             # Entry point
+│   ├── common/      # Button, SectionTitle, ThemeToggle, Reveal
+│   └── sections/    # Navigation, Hero, Work, ProjectCard, About, Contact, Footer
+├── hooks/           # useTheme
+├── constants/       # projects, skills, social links, contact
+├── types/           # shared TypeScript types
+├── styles/          # global CSS + design tokens
+└── App.tsx
 ```
 
-### Common Components
+## Before deploying
 
-- `Button` - Reusable button with variants
-- `Badge` - Status/notification badge
-- `TechBadge` - Technology stack badge
-- `StatCard` - Statistics display card
-- `SkillBadge` - Skill tag with animation
-- `SectionTitle` - Section heading component
-
-### Section Components
-
-- `Navigation` - Top navigation bar
-- `Hero` - Hero section with animated title
-- `Work` - Projects showcase section
-- `ProjectCard` - Individual project card
-- `About` - About me section
-- `Contact` - Contact section
-- `Footer` - Footer component
-- `Loading` - Loading screen
-
-### Effect Components
-
-- `CustomCursor` - Custom cursor effect
-- `Particles` - Particle animation system
-- `FloatingShapes` - Parallax floating shapes
-- `LuckyModeOverlays` - Special effect overlays
-
-### Custom Hooks
-
-- `useMousePosition` - Track mouse position
-- `useCustomCursor` - Custom cursor logic
-- `useFloatingShapes` - Floating shapes animation
-- `useParticles` - Particle system management
-- `useLuckyMode` - "I Feel Lucky" button logic
+Replace the placeholder domain `https://hamdi-almasalmeh.netlify.app/` with your real
+URL in `index.html` (canonical, Open Graph, Twitter) and in
+`public/robots.txt` + `public/sitemap.xml`.
 
 ## License
 

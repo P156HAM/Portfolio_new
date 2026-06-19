@@ -1,48 +1,39 @@
-import { Project, ThemeMap, SocialLink, Stat, Skill } from "@/types";
+import { Project, SocialLink, Stat, SkillGroup } from "@/types";
 
 export const PROJECTS: Project[] = [
   {
-    name: "Closar AI - Health Tracker",
-    type: "Web & Mobile App",
-    year: "2024",
-    color: "#ff0080",
-    desc: "Health tracker for patients and doctors",
-    tech: [
-      "React",
-      "React Native",
-      "Node.js",
-      "GCP Cloud Functions",
-      "Firebase",
-      "Python",
-      "Tailwind CSS",
-      "TypeScript",
-      "Shadcn UI",
-    ],
-    url: "https://closarai.netlify.app/",
-  },
-  {
-    name: "Selma Services",
-    type: "Mobile App",
-    year: "2024",
-    color: "#00ffff",
-    desc: "Mobile app connecting customers to service providers",
-    tech: [
-      "React Native",
-      "Expo",
-      "Node.js",
-      "GCP Cloud Functions",
-      "Firebase",
-      "TypeScript",
-      "Google Calendar API",
-    ],
-    url: "https://apps.apple.com/se/app/selma-services/id6747241740?l=en-GB",
-  },
-  {
-    name: "Vaxllo - AI receptionist",
-    type: "Web & Mobile App",
+    name: "logslim",
+    tagline: "npm package · CLI + MCP server",
+    category: "Open Source · Developer Tooling",
     year: "2025",
-    color: "#8a2be2",
-    desc: "AI receptionist for small businesses",
+    role: "Creator & maintainer",
+    description:
+      "An open-source CLI and MCP server that compacts noisy test and build output before an AI agent reads it — cutting 80–95% of the tokens, and posting readable failure summaries straight onto GitHub pull requests.",
+    highlights: [
+      "Cuts 80–95% of tokens on failing test/build output for Claude Code, Cursor and other agents",
+      "Ships a CLI, an MCP server and a GitHub Action from a single TypeScript codebase",
+      "Zero-config — npx logslim -- npm test — MIT licensed and published to npm",
+    ],
+    tech: ["TypeScript", "Node.js", "MCP", "Zod", "GitHub Actions"],
+    url: "https://www.npmjs.com/package/logslim",
+    linkLabel: "View on npm",
+    accent: "#a78bfa",
+    featured: true,
+    npmPackage: "logslim",
+  },
+  {
+    name: "Vaxllo",
+    tagline: "AI receptionist for small businesses",
+    category: "AI · Web & Mobile",
+    year: "2025",
+    role: "Full-stack developer",
+    description:
+      "An AI receptionist that answers calls and books appointments for small businesses around the clock, so they never miss a customer.",
+    highlights: [
+      "Real-time voice automation built on Twilio and OpenAI",
+      "React Native client backed by a realtime Supabase backend",
+      "Automated call handling, transcription and scheduling",
+    ],
     tech: [
       "React Native",
       "Node.js",
@@ -51,127 +42,90 @@ export const PROJECTS: Project[] = [
       "Twilio",
       "TypeScript",
       "Tailwind CSS",
-      "Shadcn UI",
     ],
     url: "https://vaxllo.netlify.app/",
+    linkLabel: "Visit site",
+    accent: "#7c3aed",
   },
-];
-
-export const THEMES: ThemeMap = {
-  default: {
-    bg: "bg-white",
-    text: "text-gray-900",
-    accent: "purple",
-    primary: "#8a2be2",
-    secondary: "#ff0080",
-    gradient: "linear-gradient(135deg, #8a2be2, #ff0080)",
+  {
+    name: "Closar AI",
+    tagline: "Health tracker for patients & doctors",
+    category: "Health · Web & Mobile",
+    year: "2024",
+    role: "Full-stack developer",
+    description:
+      "A health-tracking platform that gives patients and their doctors a shared, real-time view of care across web and mobile.",
+    highlights: [
+      "React web app and React Native mobile client sharing one product",
+      "Serverless backend on GCP Cloud Functions with Firebase auth & data",
+      "Python services for processing health data",
+    ],
+    tech: [
+      "React",
+      "React Native",
+      "Node.js",
+      "GCP Cloud Functions",
+      "Firebase",
+      "Python",
+      "TypeScript",
+    ],
+    url: "https://closarai.netlify.app/",
+    linkLabel: "Visit site",
+    accent: "#db2777",
   },
-  dark: {
-    bg: "bg-gray-900",
-    text: "text-white",
-    accent: "cyan",
-    primary: "#00ffff",
-    secondary: "#8a2be2",
-    gradient: "linear-gradient(135deg, #00ffff, #8a2be2)",
+  {
+    name: "Selma Services",
+    tagline: "Connecting customers with local services",
+    category: "Marketplace · iOS",
+    year: "2024",
+    role: "Mobile developer",
+    description:
+      "A marketplace app that connects customers with local service providers, shipped to the Apple App Store.",
+    highlights: [
+      "React Native + Expo, published on the App Store",
+      "Booking flow integrated with the Google Calendar API",
+      "Serverless backend on GCP and Firebase",
+    ],
+    tech: [
+      "React Native",
+      "Expo",
+      "Node.js",
+      "GCP Cloud Functions",
+      "Firebase",
+      "Google Calendar API",
+    ],
+    url: "https://apps.apple.com/se/app/selma-services/id6747241740?l=en-GB",
+    linkLabel: "View on App Store",
+    accent: "#0ea5e9",
   },
-  neon: {
-    bg: "bg-black",
-    text: "text-cyan-400",
-    accent: "pink",
-    primary: "#00ffff",
-    secondary: "#ff0080",
-    gradient: "linear-gradient(135deg, #00ffff, #ff0080)",
-  },
-  sunset: {
-    bg: "bg-orange-50",
-    text: "text-orange-900",
-    accent: "orange",
-    primary: "#ff6b35",
-    secondary: "#ffd700",
-    gradient: "linear-gradient(135deg, #ff6b35, #ffd700)",
-  },
-  ocean: {
-    bg: "bg-blue-50",
-    text: "text-blue-900",
-    accent: "blue",
-    primary: "#00ffff",
-    secondary: "#0066cc",
-    gradient: "linear-gradient(135deg, #00ffff, #0066cc)",
-  },
-};
-
-export const LUCKY_MODES: Array<
-  | "matrix"
-  | "theme"
-  | "glitch"
-  | "particles"
-  | "confetti"
-  | "project"
-  | "kaleidoscope"
-> = [
-  "matrix",
-  "theme",
-  "glitch",
-  "particles",
-  "confetti",
-  "project",
-  "kaleidoscope",
-];
-
-export const PARTICLE_COLORS = [
-  "#8a2be2",
-  "#ff0080",
-  "#00ffff",
-  "#ff6b35",
-  "#ffd700",
-];
-
-export const FLOATING_SHAPE_COLORS = [
-  "#8a2be2",
-  "#00ffff",
-  "#ff0080",
-  "#ff6b35",
-  "#ffd700",
-  "#00ff88",
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
   { name: "GitHub", url: "https://github.com/P156HAM" },
   { name: "LinkedIn", url: "https://www.linkedin.com/in/hamdi-almasalmeh/" },
+  { name: "npm", url: "https://www.npmjs.com/package/logslim" },
 ];
 
 export const STATS: Stat[] = [
-  { value: "10+", label: "Projects" },
-  { value: "1-2", label: "Years Exp" },
-  { value: "∞", label: "Ideas" },
+  { value: "4", label: "Products shipped" },
+  { value: "AI", label: "Core focus" },
+  { value: "OSS", label: "npm author" },
 ];
 
-export const SKILLS: Skill[] = [
-  { name: "React" },
-  { name: "Three.js" },
-  { name: "Figma" },
-  { name: "Node.js" },
-  { name: "AI/LLM" },
-  { name: "TypeScript" },
-  { name: "Next.js" },
-  { name: "Python" },
-  { name: "JavaScript" },
-  { name: "HTML" },
-  { name: "CSS" },
-  { name: "SQL" },
-  { name: "NoSQL" },
-  { name: "Docker" },
-  { name: "CI/CD" },
-  { name: "Git" },
-  { name: "React Native" },
-  { name: "Expo" },
+export const SKILL_GROUPS: SkillGroup[] = [
+  {
+    category: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Three.js"],
+  },
+  { category: "Mobile", items: ["React Native", "Expo"] },
+  {
+    category: "Backend & Cloud",
+    items: ["Node.js", "Python", "GCP", "Firebase", "Supabase", "SQL / NoSQL", "Docker", "CI/CD"],
+  },
+  { category: "AI & Automation", items: ["OpenAI / LLMs", "MCP", "Twilio Voice"] },
+  { category: "Craft", items: ["Figma", "Git", "Accessibility"] },
 ];
 
-export const LOADING_DELAY = 2000;
-export const PARTICLE_INTERVAL = 100;
-export const PARTICLE_COUNT = 5;
-export const MAX_PARTICLES = 50;
-export const LUCKY_MODE_DURATION = 5000;
-export const PROJECT_SCROLL_DELAY = 1000;
-export const CIRCLE_PATTERN_COLS = 8;
-export const CIRCLE_PATTERN_ROWS = 8;
+export const EMAIL = "a.hamdi.almasalmeh@gmail.com";
+export const CALENDAR_URL =
+  "https://calendar.google.com/calendar/u/0/r/eventedit?text=Call+with+Hamdi&details=Let%27s+meet+via+Google+Meet.+Pick+a+date+and+time+that+works+for+you.&location=Google+Meet&add=a.hamdi.almasalmeh@gmail.com";

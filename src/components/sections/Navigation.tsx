@@ -1,148 +1,97 @@
-import { useState } from "react";
-import { ThemeConfig } from "@/types";
-import { DuotoneButton } from "../common/DuotoneButton";
-import { Logo } from "../common/Logo";
+import { useEffect, useState } from "react";
+import { Theme } from "@/types";
+import { ThemeToggle } from "../common/ThemeToggle";
 
 interface NavigationProps {
-  theme: ThemeConfig;
-  onLuckyClick: () => void;
+  theme: Theme;
+  onToggleTheme: () => void;
 }
 
-export const Navigation = ({ theme, onLuckyClick }: NavigationProps) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const LINKS = [
+  { label: "Work", href: "#work" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
+
+export const Navigation = ({ theme, onToggleTheme }: NavigationProps) => {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-40 ${theme.bg}/80 backdrop-blur-md border-b border-gray-200 transition-colors duration-500`}
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-hair bg-[var(--bg)]/80 backdrop-blur-md"
+          : "border-b border-transparent"
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 flex justify-between items-center">
-        <Logo />
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex gap-6 lg:gap-8 items-center">
-          <a
-            href="#work"
-            className={`text-sm font-semibold transition-colors ${
-              theme.text === "text-white" 
-                ? "text-white hover:text-cyan-400" 
-                : "text-gray-900 hover:text-purple-600"
-            }`}
-          >
-            Work
-          </a>
-          <a
-            href="#about"
-            className={`text-sm font-semibold transition-colors ${
-              theme.text === "text-white" 
-                ? "text-white hover:text-cyan-400" 
-                : "text-gray-900 hover:text-purple-600"
-            }`}
-          >
-            About
-          </a>
-          <a
-            href="#contact"
-            className={`text-sm font-semibold transition-colors ${
-              theme.text === "text-white" 
-                ? "text-white hover:text-cyan-400" 
-                : "text-gray-900 hover:text-purple-600"
-            }`}
-          >
-            Contact
-          </a>
-          <DuotoneButton
-            variant="lucky"
-            baseColor="#8a2be2"
-            topColor="#ff0080"
-            onClick={onLuckyClick}
-            className="text-xs sm:text-sm"
-          >
-            🎲 I Feel Lucky
-          </DuotoneButton>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          aria-label="Toggle menu"
+      <nav className="mx-auto flex max-w-content items-center justify-between px-5 py-4 sm:px-8">
+        <a
+          href="#top"
+          className="flex items-center gap-2.5 text-lg font-semibold leading-none tracking-tight text-ink"
         >
-          <span
-            className={`w-6 h-0.5 transition-all ${
-              theme.text === "text-white" ? "bg-white" : "bg-gray-900"
-            } ${isMenuOpen ? "rotate-45 translate-y-2" : ""}`}
-          />
-          <span
-            className={`w-6 h-0.5 transition-all ${
-              theme.text === "text-white" ? "bg-white" : "bg-gray-900"
-            } ${isMenuOpen ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`w-6 h-0.5 transition-all ${
-              theme.text === "text-white" ? "bg-white" : "bg-gray-900"
-            } ${isMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
-          />
-        </button>
-      </div>
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--text)] text-sm font-bold leading-none text-[var(--bg)]">
+            H
+          </span>
+          <span className="hidden leading-none sm:inline">Hamdi Almasalmeh</span>
+        </a>
 
-      {/* Mobile Menu */}
+        <div className="flex items-center gap-1 sm:gap-2">
+          <ul className="hidden items-center gap-1 md:flex">
+            {LINKS.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="rounded-full px-4 py-2 text-sm font-medium leading-none text-muted transition-colors hover:text-ink"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={open}
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-hair text-ink md:hidden"
+          >
+            <span className={`h-0.5 w-5 bg-current transition-all ${open ? "translate-y-2 rotate-45" : ""}`} />
+            <span className={`h-0.5 w-5 bg-current transition-all ${open ? "opacity-0" : ""}`} />
+            <span className={`h-0.5 w-5 bg-current transition-all ${open ? "-translate-y-2 -rotate-45" : ""}`} />
+          </button>
+        </div>
+      </nav>
+
       <div
-        className={`md:hidden absolute top-full left-0 right-0 ${
-          theme.bg
-        } border-b border-gray-200 transition-all duration-300 ${
-          isMenuOpen
-            ? "max-h-96 opacity-100"
-            : "max-h-0 opacity-0 overflow-hidden"
+        className={`overflow-hidden border-hair bg-[var(--bg)] transition-all duration-300 md:hidden ${
+          open ? "max-h-60 border-b" : "max-h-0"
         }`}
       >
-        <div className="flex flex-col gap-4 px-4 py-6">
-          <a
-            href="#work"
-            onClick={() => setIsMenuOpen(false)}
-            className={`text-sm font-semibold transition-colors py-2 ${
-              theme.text === "text-white" 
-                ? "text-white hover:text-cyan-400" 
-                : "text-gray-900 hover:text-purple-600"
-            }`}
-          >
-            Work
-          </a>
-          <a
-            href="#about"
-            onClick={() => setIsMenuOpen(false)}
-            className={`text-sm font-semibold transition-colors py-2 ${
-              theme.text === "text-white" 
-                ? "text-white hover:text-cyan-400" 
-                : "text-gray-900 hover:text-purple-600"
-            }`}
-          >
-            About
-          </a>
-          <a
-            href="#contact"
-            onClick={() => setIsMenuOpen(false)}
-            className={`text-sm font-semibold transition-colors py-2 ${
-              theme.text === "text-white" 
-                ? "text-white hover:text-cyan-400" 
-                : "text-gray-900 hover:text-purple-600"
-            }`}
-          >
-            Contact
-          </a>
-          <DuotoneButton
-            variant="lucky"
-            baseColor="#8a2be2"
-            topColor="#ff0080"
-            onClick={() => {
-              onLuckyClick();
-              setIsMenuOpen(false);
-            }}
-            className="w-full text-sm"
-          >
-            🎲 I Feel Lucky
-          </DuotoneButton>
-        </div>
+        <ul className="flex flex-col gap-1 px-5 py-4">
+          {LINKS.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-xl px-4 py-3 text-base font-medium text-ink transition-colors hover:bg-[var(--surface-2)]"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-    </nav>
+    </header>
   );
 };

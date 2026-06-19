@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0b0e"/>
+      <stop offset="1" stop-color="#15101e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#A78BFA"/>
+      <stop offset="1" stop-color="#F472B6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="320" fill="#7C3AED" opacity="0.18"/>
+  <circle cx="160" cy="560" r="260" fill="#DB2777" opacity="0.12"/>
+  <text x="90" y="150" font-family="Inter, sans-serif" font-size="26" letter-spacing="6" fill="#9A9892">FULL-STACK DEVELOPER · GOTHENBURG, SWEDEN</text>
+  <text x="86" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="120" font-weight="700" fill="#F5F4F0">Hamdi Almasalmeh</text>
+  <text x="90" y="430" font-family="Inter, sans-serif" font-size="44" fill="#C9C7C0">Building AI-powered web &amp; mobile</text>
+  <text x="90" y="490" font-family="Inter, sans-serif" font-size="44" fill="url(#accent)" font-weight="600">products, end to end.</text>
+  <rect x="90" y="545" width="120" height="6" rx="3" fill="url(#accent)"/>
+</svg>

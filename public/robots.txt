@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hamdi-almasalmeh.netlify.app/sitemap.xml

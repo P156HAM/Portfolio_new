@@ -1,97 +1,94 @@
-import { DuotoneButton } from "../common/DuotoneButton";
-import { Badge } from "../common/Badge";
-import { DuotoneText } from "../common/DuotoneText";
+import { Button } from "../common/Button";
 
-interface HeroProps {
-  onCursorEnter: () => void;
-  onCursorLeave: () => void;
-}
+const MARQUEE = [
+  "React",
+  "React Native",
+  "TypeScript",
+  "Node.js",
+  "Next.js",
+  "OpenAI / LLMs",
+  "Supabase",
+  "Firebase",
+  "Python",
+  "Expo",
+  "MCP",
+  "Tailwind CSS",
+];
 
-export const Hero = ({ onCursorEnter, onCursorLeave }: HeroProps) => {
-  const handleScrollToWork = () => {
-    document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
-  };
+const scrollTo = (id: string) =>
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
-  const handleScrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
+export const Hero = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 pt-20 sm:pt-24 md:pt-32 relative">
-      <div className="max-w-6xl w-full text-center">
-        <Badge
-          icon="✨"
-          className="mb-4 sm:mb-6 md:mb-8 animate-bounce text-xs sm:text-sm"
-        >
-          Available for projects
-        </Badge>
+    <section className="relative flex min-h-screen items-center overflow-hidden px-5 pt-28 pb-16 sm:px-8">
+      {/* ambient glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 right-[-10%] h-[42rem] w-[42rem] rounded-full opacity-60 blur-3xl"
+        style={{
+          background:
+            "radial-gradient(circle, var(--accent-soft), transparent 70%)",
+        }}
+      />
 
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black mb-4 sm:mb-5 md:mb-6 leading-tight sm:leading-none">
-          {["C", "r", "e", "a", "t", "i", "v", "e"].map((letter, i) => (
-            <DuotoneText
-              key={i}
-              baseColor="#8a2be2"
-              topColor="#ff0080"
-              className={`inline-block transition-transform duration-300 cursor-default ${
-                i % 2 === 0 ? "hover:rotate-12" : "hover:-rotate-6"
-              }`}
-            >
-              {letter}
-            </DuotoneText>
-          ))}
+      <div className="relative z-10 mx-auto w-full max-w-content">
+        <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-hair bg-[var(--surface)] px-4 py-1.5">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-70" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+          </span>
+          <span className="text-xs font-medium text-muted">
+            Available for freelance &amp; full-time
+          </span>
+        </div>
+
+        <h1 className="font-display text-5xl font-semibold leading-[1.02] tracking-tight text-ink sm:text-6xl md:text-7xl lg:text-8xl">
+          I build <span className="gradient-text">AI-powered</span>
           <br />
-          {["D", "e", "v", "e", "l", "o", "p", "e", "r"].map((letter, i) => (
-            <DuotoneText
-              key={i}
-              baseColor="#8a2be2"
-              topColor="#00ffff"
-              className={`inline-block transition-transform duration-300 cursor-default ${
-                i % 2 === 0 ? "hover:rotate-12" : "hover:-rotate-6"
-              }`}
-            >
-              {letter}
-            </DuotoneText>
-          ))}
+          web &amp; mobile products,
+          <br />
+          <span className="italic text-muted">end to end.</span>
         </h1>
 
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto font-light leading-relaxed px-4">
-          I craft delightful digital experiences that blend
-          <strong className="font-bold text-purple-600"> art</strong>,
-          <strong className="font-bold text-cyan-600"> code</strong>, and
-          <strong className="font-bold text-pink-600"> innovation</strong>
+        <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
+          Full-stack developer from Gothenburg, Sweden. I take ideas from
+          prototype to the App Store — and build open-source tools for
+          developers along the way.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-14 md:mb-16 px-4">
-          <DuotoneButton
-            variant="primary"
-            baseColor="#8a2be2"
-            topColor="#ff0080"
-            onClick={handleScrollToWork}
-            onMouseEnter={onCursorEnter}
-            onMouseLeave={onCursorLeave}
-            className="w-full sm:w-auto text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5"
+        <div className="mt-9 flex flex-wrap items-center gap-3">
+          <Button variant="primary" onClick={() => scrollTo("work")}>
+            View work
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-y-0.5" aria-hidden="true">
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+          </Button>
+          <Button variant="ghost" onClick={() => scrollTo("contact")}>
+            Get in touch
+          </Button>
+          <a
+            href="/Hamdi_Resume.pdf"
+            download
+            className="group ml-1 inline-flex items-center gap-1.5 px-2 py-2 text-sm font-medium text-muted transition-colors hover:text-ink"
           >
-            See My Work ✨
-          </DuotoneButton>
-          <DuotoneButton
-            variant="primary"
-            baseColor="#00ffff"
-            topColor="#8a2be2"
-            onClick={handleScrollToContact}
-            onMouseEnter={onCursorEnter}
-            onMouseLeave={onCursorLeave}
-            className="w-full sm:w-auto text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5"
-          >
-            Let's Talk 💬
-          </DuotoneButton>
-        </div>
-
-        <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
-          <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-gray-400 rounded-full flex justify-center">
-            <div className="w-1 h-2 sm:h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
-          </div>
+            Download CV
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-y-0.5" aria-hidden="true">
+              <path d="M12 3v12M7 10l5 5 5-5M5 21h14" />
+            </svg>
+          </a>
         </div>
       </div>
-    </div>
+
+      {/* tech marquee */}
+      <div className="absolute inset-x-0 bottom-8 hidden overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)] sm:block">
+        <div className="flex w-max animate-marquee gap-10 whitespace-nowrap pr-10">
+          {[...MARQUEE, ...MARQUEE].map((item, i) => (
+            <span key={i} className="text-sm font-medium uppercase tracking-wider text-muted/70">
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };

@@ -1,54 +1,21 @@
 export interface Project {
   name: string;
-  type: string;
+  tagline: string;
+  category: string;
   year: string;
-  color: string;
-  desc: string;
+  role: string;
+  description: string;
+  highlights: string[];
   tech: string[];
   url: string;
-}
-
-export interface Particle {
-  id: number;
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  color: string;
-  rotation: number;
-  rotationSpeed: number;
-}
-
-export interface MousePosition {
-  x: number;
-  y: number;
-}
-
-export type LuckyMode =
-  | "particles"
-  | "confetti"
-  | "theme"
-  | "project"
-  | "matrix"
-  | "kaleidoscope"
-  | "glitch"
-  | null;
-
-export type Theme = "default" | "dark" | "neon" | "sunset" | "ocean";
-
-export interface ThemeConfig {
-  bg: string;
-  text: string;
+  linkLabel: string;
   accent: string;
-  primary: string;
-  secondary: string;
-  gradient: string;
+  featured?: boolean;
+  /** npm package name — when set, the card shows a live weekly download count */
+  npmPackage?: string;
 }
 
-export interface ThemeMap {
-  [key: string]: ThemeConfig;
-}
+export type Theme = "light" | "dark";
 
 export interface SocialLink {
   name: string;
@@ -60,6 +27,7 @@ export interface Stat {
   label: string;
 }
 
-export interface Skill {
-  name: string;
+export interface SkillGroup {
+  category: string;
+  items: string[];
 }

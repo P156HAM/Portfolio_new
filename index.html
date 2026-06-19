@@ -2,13 +2,141 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Epic Portfolio</title>
+
+    <!-- Primary meta -->
+    <title>Hamdi Almasalmeh — Full-Stack Developer</title>
+    <meta
+      name="description"
+      content="Hamdi Almasalmeh is a full-stack developer in Gothenburg, Sweden, building AI-powered web and mobile products end to end with React, React Native, Node.js and TypeScript."
+    />
+    <meta name="author" content="Hamdi Almasalmeh" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="theme-color"
+      content="#0b0b0e"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#fbfaf7"
+      media="(prefers-color-scheme: light)"
+    />
+    <link rel="canonical" href="https://hamdi-almasalmeh.netlify.app/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hamdi Almasalmeh" />
+    <meta
+      property="og:title"
+      content="Hamdi Almasalmeh — Full-Stack Developer"
+    />
+    <meta
+      property="og:description"
+      content="Full-stack developer building AI-powered web and mobile products end to end. Based in Gothenburg, Sweden."
+    />
+    <meta property="og:url" content="https://hamdi-almasalmeh.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://hamdi-almasalmeh.netlify.app/og-image.svg"
+    />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Hamdi Almasalmeh — Full-Stack Developer"
+    />
+    <meta
+      name="twitter:description"
+      content="Full-stack developer building AI-powered web and mobile products end to end. Based in Gothenburg, Sweden."
+    />
+    <meta
+      name="twitter:image"
+      content="https://hamdi-almasalmeh.netlify.app/og-image.svg"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured data: Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Hamdi Almasalmeh",
+        "url": "https://hamdi-almasalmeh.netlify.app/",
+        "jobTitle": "Full-Stack Developer",
+        "description": "Full-stack developer building AI-powered web and mobile products end to end.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Gothenburg",
+          "addressCountry": "Sweden"
+        },
+        "knowsAbout": [
+          "React",
+          "React Native",
+          "TypeScript",
+          "Node.js",
+          "Artificial Intelligence",
+          "Large Language Models"
+        ],
+        "sameAs": [
+          "https://github.com/P156HAM",
+          "https://www.linkedin.com/in/hamdi-almasalmeh/",
+          "https://www.npmjs.com/package/logslim"
+        ]
+      }
+    </script>
+
+    <!-- Set theme before paint to avoid a flash -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          if (stored === "dark" || (!stored && prefersDark)) {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div
+        style="
+          max-width: 40rem;
+          margin: 4rem auto;
+          font-family: sans-serif;
+          padding: 0 1.5rem;
+        "
+      >
+        <h1>Hamdi Almasalmeh — Full-Stack Developer</h1>
+        <p>
+          Full-stack developer in Gothenburg, Sweden, building AI-powered web
+          and mobile products with React, React Native, Node.js and TypeScript.
+        </p>
+        <p>
+          Contact:
+          <a href="mailto:a.hamdi.almasalmeh@gmail.com"
+            >a.hamdi.almasalmeh@gmail.com</a
+          >
+          · <a href="https://github.com/P156HAM">GitHub</a> ·
+          <a href="https://www.linkedin.com/in/hamdi-almasalmeh/">LinkedIn</a>
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

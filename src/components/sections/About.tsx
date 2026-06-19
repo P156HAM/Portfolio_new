@@ -1,127 +1,85 @@
-import { StatCard } from "../common/StatCard";
-import { SkillBadge } from "../common/SkillBadge";
-import { STATS, SKILLS } from "@/constants";
-import { ThemeConfig } from "@/types";
+import { STATS, SKILL_GROUPS } from "@/constants";
+import { Reveal } from "../common/Reveal";
+import { Button } from "../common/Button";
 
-interface AboutProps {
-  theme: ThemeConfig;
-}
-
-export const About = ({ theme }: AboutProps) => {
-  const statConfigs = [
-    {
-      gradientFrom: "from-purple-100",
-      gradientTo: "to-pink-100",
-      textColor: "text-purple-600",
-    },
-    {
-      gradientFrom: "from-cyan-100",
-      gradientTo: "to-blue-100",
-      textColor: "text-cyan-600",
-    },
-    {
-      gradientFrom: "from-pink-100",
-      gradientTo: "to-orange-100",
-      textColor: "text-pink-600",
-    },
-  ];
-
+export const About = () => {
   return (
-    <div
+    <section
       id="about"
-      className={`py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 ${theme.bg} relative overflow-hidden transition-colors duration-1000`}
+      className="border-t border-hair bg-[var(--surface)] px-5 py-24 sm:px-8 sm:py-32"
     >
-      <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 rounded-full bg-purple-100 opacity-20 blur-3xl animate-pulse" />
-      <div
-        className="absolute bottom-10 sm:bottom-20 left-10 sm:left-20 w-48 sm:w-64 md:w-80 lg:w-96 h-48 sm:h-64 md:h-80 lg:h-96 rounded-full bg-cyan-100 opacity-20 blur-3xl animate-pulse"
-        style={{ animationDelay: "1s" }}
-      />
+      <div className="mx-auto grid max-w-content gap-14 lg:grid-cols-2 lg:gap-20">
+        <Reveal>
+          <div className="flex items-center gap-3 mb-5">
+            <span className="eyebrow text-accent">02</span>
+            <span className="eyebrow">About</span>
+          </div>
+          <h2 className="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl md:text-6xl">
+            Hi, I'm Hamdi.
+          </h2>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 items-start md:items-center">
-          <div>
-            <div className="text-xs sm:text-sm font-bold tracking-widest text-cyan-600 mb-3 sm:mb-4 uppercase">
-              About Me
-            </div>
-            <h2
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black ${theme.text} mb-4 sm:mb-6 md:mb-8 leading-tight`}
-            >
-              Hi, I'm Hamdi
-            </h2>
-            <p
-              className={`text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-5 md:mb-6 ${
-                theme.text === "text-white" ? "text-gray-300" : "text-gray-600"
-              }`}
-            >
-              I'm an independent creative developer from{" "}
-              <strong
-                className={
-                  theme.text === "text-white"
-                    ? "text-cyan-400"
-                    : "text-purple-600"
-                }
-              >
-                Gothenburg, Sweden
-              </strong>
-              , with a passion for building beautiful, functional, and
-              user-friendly digital experiences.
+          <div className="mt-7 space-y-5 text-lg leading-relaxed text-muted">
+            <p>
+              I'm a full-stack developer based in{" "}
+              <span className="font-medium text-ink">Gothenburg, Sweden</span>. I
+              build AI-powered web and mobile products — owning them from the
+              first prototype through to production, the App Store, and the npm
+              registry.
             </p>
-            <p
-              className={`text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-7 md:mb-8 ${
-                theme.text === "text-white" ? "text-gray-300" : "text-gray-600"
-              }`}
-            >
-              I combine technical expertise with creative vision to deliver
-              exceptional results that make people say{" "}
-              <em
-                className={
-                  theme.text === "text-white"
-                    ? "text-cyan-400 font-semibold"
-                    : "text-pink-600 font-semibold"
-                }
-              >
-                "Wow!"
-              </em>{" "}
+            <p>
+              I care about the details that make software feel effortless: fast
+              interfaces, clear flows, and code that's a pleasure to maintain.
+              Lately I've been deep in voice AI, LLM tooling, and developer
+              experience.
             </p>
-
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-7 md:mb-8">
-              {STATS.map((stat, i) => (
-                <StatCard key={i} {...stat} {...statConfigs[i]} />
-              ))}
-            </div>
-
-            <a
-              href="/Hamdi_Resume.pdf"
-              download="Hamdi_Resume.pdf"
-              className={`px-6 sm:px-7 md:px-8 py-3 sm:py-3.5 md:py-4 text-white text-sm sm:text-base font-bold rounded-full hover:scale-110 transition-all shadow-lg inline-block ${
-                theme.text === "text-white"
-                  ? "bg-cyan-500 hover:bg-cyan-400"
-                  : "bg-black hover:bg-purple-600"
-              }`}
-            >
-              Download Resume 📄
-            </a>
           </div>
 
-          <div className="relative mt-8 md:mt-0">
-            <div className="space-y-3 sm:space-y-4">
-              {SKILLS.map((skill, i) => (
-                <SkillBadge key={i} skill={skill.name} index={i} />
-              ))}
-            </div>
-
-            <div className="mt-8 sm:mt-10 md:mt-12 p-6 sm:p-7 md:p-8 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl sm:rounded-3xl border-4 border-yellow-400 transform rotate-2 hover:rotate-0 transition-all shadow-xl">
-              <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">
-                ☕
+          <div className="mt-9 grid grid-cols-3 gap-4">
+            {STATS.map((stat) => (
+              <div key={stat.label} className="rounded-2xl border border-hair p-4">
+                <div className="font-display text-3xl font-semibold text-ink sm:text-4xl">
+                  {stat.value}
+                </div>
+                <div className="mt-1 text-xs text-muted sm:text-sm">{stat.label}</div>
               </div>
-              <p className="text-base sm:text-lg font-bold text-gray-800">
-                Coffee consumed:{" "}
-                <span className="text-orange-600">~4,847 cups</span>
-              </p>
-            </div>
+            ))}
           </div>
-        </div>
+
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Button href="/Hamdi_Resume.pdf" download variant="accent">
+              Download CV
+            </Button>
+            <Button
+              href="https://www.linkedin.com/in/hamdi-almasalmeh/"
+              external
+              variant="ghost"
+            >
+              LinkedIn
+            </Button>
+          </div>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <div className="space-y-8">
+            <p className="eyebrow">What I work with</p>
+            {SKILL_GROUPS.map((group) => (
+              <div key={group.category} className="border-t border-hair pt-5">
+                <h3 className="mb-3 text-sm font-semibold text-ink">{group.category}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-hair px-3 py-1.5 text-sm text-muted transition-colors hover:border-[var(--accent)] hover:text-ink"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
-    </div>
+    </section>
   );
 };
